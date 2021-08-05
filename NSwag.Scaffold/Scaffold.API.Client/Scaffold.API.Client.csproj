@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <!-- to make msbuild happy... -->
+    <Compile Remove="Client.Generated.cs" />
+    <Compile Include="Client.Generated.cs" />
+  </ItemGroup>
+
+</Project>

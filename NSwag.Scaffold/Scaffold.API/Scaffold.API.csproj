@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NSwag.AspNetCore" Version="13.10.2" />
+    <PackageReference Include="NSwag.MSBuild" Version="13.10.2" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <NSwagInputFiles Include="$(MSBuildThisFileDirectory)**/*.cs" Exclude="$(MSBuildThisFileDirectory)obj/**/*.cs" />
+    <NSwagInputFiles Remove="nswag.json" />
+    <NSwagInputFiles Include="$(MSBuildThisFileDirectory)nswag.json" />
+    <NSwagOutputFiles Include="$(MSBuildThisFileDirectory)../Scaffold.API.Client/Client.Generated.cs" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\Scaffold.API.Client\Scaffold.API.Client.csproj" />
+  </ItemGroup>
+
+  <Target Name="NSwag" AfterTargets="Build" Inputs="@(NSwagInputFiles)" Outputs="@(NSwagOutputFiles)">
+    <Delete Files="@(NSwagOutputFiles)" />
+    <Exec Command="$(NSwagExe_Core31) run nswag.json /variables:Configuration=$(Configuration)" />
+  </Target>
+
+</Project>
