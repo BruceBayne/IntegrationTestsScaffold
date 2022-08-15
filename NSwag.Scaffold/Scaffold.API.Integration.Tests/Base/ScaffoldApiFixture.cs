@@ -6,7 +6,7 @@ namespace Scaffold.API.Integration.Tests.Base
 {
 	public sealed class ScaffoldApiFixture : IDisposable
 	{
-		public const string url = "http://localhost:54318";
+		public const string Url = "http://localhost:54318";
 		private readonly IWebHost host;
 
 		public ScaffoldApiFixture()
@@ -15,7 +15,7 @@ namespace Scaffold.API.Integration.Tests.Base
 				.UseEnvironment("Development")
 				.UseStartup<Startup>()
 				.UseKestrel()
-				.UseUrls(url)
+				.UseUrls(Url)
 				.Build();
 			host.Start();
 		}

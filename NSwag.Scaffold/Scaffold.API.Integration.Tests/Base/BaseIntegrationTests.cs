@@ -1,4 +1,4 @@
-﻿using Deep.Api.Client;
+﻿using Scaffold.Api.Client;
 using Xunit;
 
 namespace Scaffold.API.Integration.Tests.Base
@@ -13,7 +13,7 @@ namespace Scaffold.API.Integration.Tests.Base
 		protected BaseIntegrationTests(ScaffoldApiFixture application)
 		{
 			Application = application;
-			Client = new ScaffoldApiClient(ScaffoldApiFixture.url);
+			Client = new ScaffoldApiClient(ScaffoldApiFixture.Url);
 		}
 	}
 }
